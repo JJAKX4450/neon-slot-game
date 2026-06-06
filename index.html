@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&#xB124;&#xC628; &#xC2AC;&#xB86F;</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
+      <div class="coin-rain" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="jackpot-coins" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <section class="machine" aria-label="&#xB124;&#xC628; &#xC2AC;&#xB86F;&#xBA38;&#xC2E0;">
+        <canvas class="machine-chrome" id="machineChrome" aria-hidden="true"></canvas>
+        <div class="casino-crown" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="side-lights side-lights-left" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="side-lights side-lights-right" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="casino-base" aria-hidden="true"></div>
+        <div class="jackpot-banner" id="jackpotBanner" aria-hidden="true">
+          <strong>&#xC7AD;&#xD31F;!</strong>
+          <span>&#xAC1C;&#xBBF8;&#xCE5C; &#xBD80;&#xC790;&#xAC00; &#xB418;&#xC5C8;&#xB2E4;!!</span>
+        </div>
+        <div class="bigwin-banner" id="bigWinBanner" aria-hidden="true">
+          <strong>BIG WIN</strong>
+          <span>&#xB3C8;&#xBE44;&#xAC00; &#xB0B4;&#xB9B0;&#xB2E4;!</span>
+        </div>
+        <div class="reward-pop" id="rewardPop" aria-hidden="true">+0</div>
+
+        <div class="spin-burst" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <button class="lever" id="leverButton" type="button" aria-label="&#xC2AC;&#xB86F;&#xBA38;&#xC2E0; &#xB808;&#xBC84; &#xB2F9;&#xAE30;&#xAE30;">
+          <span class="lever-handle">
+            <span class="lever-arm"></span>
+            <span class="lever-knob"></span>
+          </span>
+          <span class="lever-base"></span>
+        </button>
+
+        <div class="marquee" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">&#xD589;&#xC6B4; &#xC2AC;&#xB86F;</p>
+            <h1>&#xB124;&#xC628; &#xC2AC;&#xB86F;</h1>
+          </div>
+          <div class="status-pill" id="statusPill">&#xB300;&#xAE30; &#xC911;</div>
+        </header>
+
+        <section class="scoreboard" aria-label="&#xAC8C;&#xC784; &#xC0C1;&#xD0DC;">
+          <div>
+            <span>&#xD06C;&#xB808;&#xB527;</span>
+            <strong id="credits">1000</strong>
+          </div>
+          <div>
+            <span>&#xBCA0;&#xD305;</span>
+            <strong id="bet">25</strong>
+          </div>
+          <div>
+            <span>&#xCD5C;&#xADFC; &#xB2F9;&#xCCA8;</span>
+            <strong id="lastWin">0</strong>
+          </div>
+        </section>
+
+        <section class="reels" aria-label="&#xC2AC;&#xB86F; &#xB9B4;">
+          <div class="payline"></div>
+          <div class="reel" id="reel0"><span data-symbol="seven">7</span></div>
+          <div class="reel" id="reel1"><span data-symbol="bar">BAR</span></div>
+          <div class="reel" id="reel2"><span data-symbol="crown">&#x1F451;</span></div>
+        </section>
+
+        <p class="message" id="message">&#xBCA0;&#xD305; &#xAE08;&#xC561;&#xC744; &#xC815;&#xD558;&#xACE0; &#xB808;&#xBC84;&#xB97C; &#xB2F9;&#xACA8;&#xBCF4;&#xC138;&#xC694;.</p>
+
+        <section class="controls" aria-label="&#xC2AC;&#xB86F; &#xC870;&#xC791;">
+          <button class="icon-button" id="betDown" type="button" aria-label="&#xBCA0;&#xD305; &#xC904;&#xC774;&#xAE30;">-</button>
+          <button class="primary" id="spinButton" type="button">&#xB808;&#xBC84; &#xB2F9;&#xAE30;&#xAE30;</button>
+          <button class="icon-button" id="betUp" type="button" aria-label="&#xBCA0;&#xD305; &#xC62C;&#xB9AC;&#xAE30;">+</button>
+          <button class="secondary" id="autoButton" type="button">&#xC790;&#xB3D9;</button>
+          <button class="secondary" id="resetButton" type="button">&#xCD08;&#xAE30;&#xD654;</button>
+        </section>
+
+        <section class="paytable" aria-label="&#xB2F9;&#xCCA8;&#xD45C;">
+          <h2>&#xB2F9;&#xCCA8;&#xD45C;</h2>
+          <div class="paytable-grid">
+            <span>7 7 7</span><strong>&#xC7AD;&#xD31F; x40</strong>
+            <span>&#x1F451; &#x1F451; &#x1F451;</span><strong>x18</strong>
+            <span>BAR BAR BAR</span><strong>x12</strong>
+            <span>&#xAC19;&#xC740; &#xC544;&#xC774;&#xCF58; 2&#xAC1C;</span><strong>x3</strong>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
